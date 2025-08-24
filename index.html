@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.css">
+    <title>BudgetBuddy</title>
+</head>
+<body>
+    <section class="bbuddy">
+        <h1 class="bbuddy__headline">
+            BudgetBuddy
+        </h1>
+        <p class="bbuddy__disclaimer">
+            Bla bla es werden keine Daten gespeichert...
+        </p>
+
+        <div class="bbuddy__intake">
+            <h2 class="bbuddy__subheadline">
+                Monatliche Einnahmen
+            </h2>
+            <div class="bbuddy__intake-items">
+                <div class="bbuddy__intake-item">
+                    <p class="bbuddy__intakte-name">Gehalt</p>
+                    <p class="bbuddy__intakte-value">2000€</p>
+                    <button type="button" class="bbuddy__remove">
+                        -
+                        <span class="visually-hidden">Entfernen</span>
+                    </button>
+                </div>
+                <div class="bbuddy__intake-item">
+                    <p class="bbuddy__intakte-name">Mieteinnahmen</p>
+                    <p class="bbuddy__intakte-value">1200€</p>
+                    <button type="button" class="bbuddy__remove">
+                        -
+                        <span class="visually-hidden">Entfernen</span>
+                    </button>
+                </div>
+            </div>
+            <div class="bbuddy__add">
+                <h3 class="bbuddy__add-headline">
+                    Einnahme hinzufügen
+                </h3>
+                <form class="bbuddy__add-form" action="">
+                    <div class="bbuddy__add-field">
+                        <label for="bbuddy__add-name">Bezeichnung</label>
+                        <input id="bbuddy__add-name" type="text" placeholder="Gehalt" class="bbuddy__add-name">
+                    </div>
+                    
+                    <div class="bbuddy__add-submit-wrapper">
+                        <div class="bbuddy__add-field">
+                            <label for="bbuddy__add-price">Wert</label>
+                            <input id="bbuddy__add-price" type="text" placeholder="1500" class="bbuddy__add-price">
+                        </div>
+
+                        <button type="submit" class="bbuddy__add-button">
+                            +
+                            <span class="visually-hidden">Einnahme hinzufügen</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="bbuddy__output">
+            <h2 class="bbuddy__subheadline">
+                Monatliche Ausgaben
+            </h2>
+            <div class="bbuddy__essential">
+                <p class="bbuddy__output-type">Unerlässlich</p>
+                <div class="bbuddy__output-items">
+                    <div class="bbuddy__output-item">
+                        <p class="bbuddy__output-name">Miete</p>
+                        <p class="bbuddy__output-amount">1300€</p>
+                        <button type="button" class="bbuddy__remove">
+                            -
+                            <span class="visually-hidden">Entfernen</span>
+                        </button>
+                    </div>
+                    <div class="bbuddy__output-item">
+                        <p class="bbuddy__output-name">Lebensmittel</p>
+                        <p class="bbuddy__output-amount">130€</p>
+                        <button type="button" class="bbuddy__remove">
+                            -
+                            <span class="visually-hidden">Entfernen</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bbuddy__important">
+                <p class="bbuddy__output-type">Wichtig</p>
+                <div class="bbuddy__output-items">
+                    <div class="bbuddy__output-item">
+                        <p class="bbuddy__output-name">Handyvertrag</p>
+                        <p class="bbuddy__output-amount">9,99€</p>
+                        <button type="button" class="bbuddy__remove">
+                            -
+                            <span class="visually-hidden">Entfernen</span>
+                        </button>
+                    </div>
+                    <div class="bbuddy__output-item">
+                        <p class="bbuddy__output-name">DB Ticket</p>
+                        <p class="bbuddy__output-amount">60€</p>
+                        <button type="button" class="bbuddy__remove">
+                            -
+                            <span class="visually-hidden">Entfernen</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bbuddy__entertainment">
+                <p class="bbuddy__output-type">Unterhaltung</p>
+                <div class="bbuddy__output-items">
+                    <div class="bbuddy__output-item">
+                        <p class="bbuddy__output-name">CrunchyRoll</p>
+                        <p class="bbuddy__output-amount">9,99€</p>
+                        <button type="button" class="bbuddy__remove">
+                            -
+                            <span class="visually-hidden">Entfernen</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bbuddy__add">
+                <h3 class="bbuddy__add-headline">
+                    Ausgabe hinzufügen
+                </h3>
+                <form class="bbuddy__add-form" action="">
+                    <div class="bbuddy__add-field">
+                        <label for="bbuddy__add-name">Ausgabenname</label>
+                        <input id="bbuddy__add-name" type="text" placeholder="Neue Ausgabe" class="bbuddy__add-name">
+                    </div>
+
+                    <div class="bbuddy__add-field">
+                        <label for="bbuddy__add-type">Ausgabentyp</label>
+                        <select id="bbuddy__add-type" type="text" class="bbuddy__add-type">
+                            <option value="essential">Unerlässlich</option>
+                            <option value="important">Wichtig</option>
+                            <option value="entertainment">Unterhaltung</option>
+                        </select>
+                    </div>
+                    
+                    <div class="bbuddy__add-submit-wrapper">
+                        <div class="bbuddy__add-field">
+                            <label for="bbuddy__add-price">Kosten</label>
+                            <input id="bbuddy__add-price" type="text" placeholder="Preis" class="bbuddy__add-price">
+                        </div>
+
+                        <button type="submit" class="bbuddy__add-button">
+                            +
+                            <span class="visually-hidden">Einnahme hinzufügen</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <section class="bbuddy__balance-section">
+            <h2 class="bbuddy__subheadline">
+                Monatsbilanz
+            </h2>
+            <div class="bbuddy__balance-row">
+                <p class="bbuddy__total-label">Einnahmen</p>
+                <p class="bbuddy__total-value">2000€</p>
+            </div>
+            <div class="bbuddy__balance-row">
+                <p class="bbuddy__total-label">Ausgaben</p>
+                <p class="bbuddy__total-value">1200€</p>
+            </div>
+            <div class="bbuddy__balance-row bbuddy__balance-row--bold">
+                <p class="bbuddy__total-label">Bilanz</p>
+                <p class="bbuddy__total-value">1200€</p>
+            </div>
+        </section>
+
+        <section class="bbuddy__preview-section">
+            <h2 class="bbuddy__subheadline">
+                Vorschau
+            </h2>
+            <div class="bbuddy__preview">
+                <div class="bbuddy__preview-row">
+                    <p class="bbuddy__preview-moth">1 Monat</p>
+                    <p class="bbuddy__preview-value">1200€</p>
+                </div>
+                <div class="bbuddy__preview-row">
+                    <p class="bbuddy__preview-moth">2 Monat</p>
+                    <p class="bbuddy__preview-value">2400€</p>
+                </div>
+                <div class="bbuddy__preview-row">
+                    <p class="bbuddy__preview-moth">3 Monat</p>
+                    <p class="bbuddy__preview-value">3600€</p>
+                </div>
+                <div class="bbuddy__preview-row">
+                    <p class="bbuddy__preview-moth">4 Monat</p>
+                    <p class="bbuddy__preview-value">4800€</p>
+                </div>
+            </div>
+        </section>
+    </section>
+</body>
+</html>
