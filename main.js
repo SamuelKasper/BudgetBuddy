@@ -1,12 +1,27 @@
+let data = null;
 document.addEventListener("DOMContentLoaded", async (event) => {
-    let data = await readJson();
+    data = await readJson();
     createEntries(data);
 })
+
+let current = document.getElementById('bbuddy__preview-current');
+current.addEventListener("input", (event) => {
+  createEntries(data)
+});
 
 /**
  * Baut das HTML für die Einträge
  */
 function createEntries(data){
+    let intakeItemsEl = document.querySelector('.bbuddy__intake-items');
+    let essentialsEl = document.querySelector('.bbuddy__essential > .bbuddy__output-items');
+    let importantEl = document.querySelector('.bbuddy__important > .bbuddy__output-items');
+    let entertainmentEl = document.querySelector('.bbuddy__entertainment > .bbuddy__output-items');
+    intakeItemsEl.innerHTML = '';
+    essentialsEl.innerHTML = '';
+    importantEl.innerHTML = '';
+    entertainmentEl.innerHTML = '';
+
     let intakes = data?.intake;
     let outputs = data?.output;
     let essentials = outputs?.essential;
@@ -58,9 +73,15 @@ function calculateBalance(intakeTotal, outputTotal) {
 }
 
 function createPreview(balance) {
-    let wrapper = document.querySelector('.bbuddy__preview');
-    let newBalance = balance;
+    let current = document.getElementById('bbuddy__preview-current').value ?? 0;
+    if (!typeof current === "number") {
+        current = 0;
+    }
 
+    let wrapper = document.querySelector('.bbuddy__preview');
+    wrapper.innerHTML = '';
+    let newBalance = Number(Number(current) + Number(balance));
+    
     for (let i = 1; i <= 12; i++){
         let previewMonth = document.createElement('p');
         previewMonth.classList.add('bbuddy__preview-moth');
@@ -69,7 +90,7 @@ function createPreview(balance) {
         }else{
             previewMonth.innerText = i + ' Monate';
         }
-
+        
         let previewValue = document.createElement('p');
         previewValue.classList.add('bbuddy__preview-value');
         previewValue.innerText = newBalance.toFixed(2) + '€';
