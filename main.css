@@ -145,7 +145,7 @@ body {
   background-color: #124c96;
   color: #fcfcfc;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   cursor: pointer;
 
   &:hover {

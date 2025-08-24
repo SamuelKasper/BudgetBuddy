@@ -19,38 +19,21 @@
             <h2 class="bbuddy__subheadline">
                 Monatliche Einnahmen
             </h2>
-            <div class="bbuddy__intake-items">
-                <div class="bbuddy__intake-item">
-                    <p class="bbuddy__intakte-name">Gehalt</p>
-                    <p class="bbuddy__intakte-value">2000€</p>
-                    <button type="button" class="bbuddy__remove">
-                        -
-                        <span class="visually-hidden">Entfernen</span>
-                    </button>
-                </div>
-                <div class="bbuddy__intake-item">
-                    <p class="bbuddy__intakte-name">Mieteinnahmen</p>
-                    <p class="bbuddy__intakte-value">1200€</p>
-                    <button type="button" class="bbuddy__remove">
-                        -
-                        <span class="visually-hidden">Entfernen</span>
-                    </button>
-                </div>
-            </div>
+            <div class="bbuddy__intake-items"></div>
             <div class="bbuddy__add">
                 <h3 class="bbuddy__add-headline">
                     Einnahme hinzufügen
                 </h3>
-                <form class="bbuddy__add-form" action="">
+                <form class="bbuddy__add-form" action="javascript:addIntake()" method="get">
                     <div class="bbuddy__add-field">
-                        <label for="bbuddy__add-name">Bezeichnung</label>
-                        <input id="bbuddy__add-name" type="text" placeholder="Gehalt" class="bbuddy__add-name">
+                        <label for="bbuddy__add-intake-name">Bezeichnung</label>
+                        <input id="bbuddy__add-intake-name" type="text" name="name" placeholder="Gehalt" class="bbuddy__add-name">
                     </div>
                     
                     <div class="bbuddy__add-submit-wrapper">
                         <div class="bbuddy__add-field">
-                            <label for="bbuddy__add-price">Wert</label>
-                            <input id="bbuddy__add-price" type="text" placeholder="1500" class="bbuddy__add-price">
+                            <label for="bbuddy__add-intake-price">Wert</label>
+                            <input id="bbuddy__add-intake-price" type="text" name="value" placeholder="1500" class="bbuddy__add-price">
                         </div>
 
                         <button type="submit" class="bbuddy__add-button">
@@ -69,7 +52,7 @@
             <div class="bbuddy__essential">
                 <p class="bbuddy__output-type">Unerlässlich</p>
                 <div class="bbuddy__output-items">
-                    <div class="bbuddy__output-item">
+                    <!-- <div class="bbuddy__output-item">
                         <p class="bbuddy__output-name">Miete</p>
                         <p class="bbuddy__output-amount">1300€</p>
                         <button type="button" class="bbuddy__remove">
@@ -84,14 +67,14 @@
                             -
                             <span class="visually-hidden">Entfernen</span>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
             <div class="bbuddy__important">
                 <p class="bbuddy__output-type">Wichtig</p>
                 <div class="bbuddy__output-items">
-                    <div class="bbuddy__output-item">
+                    <!-- <div class="bbuddy__output-item">
                         <p class="bbuddy__output-name">Handyvertrag</p>
                         <p class="bbuddy__output-amount">9,99€</p>
                         <button type="button" class="bbuddy__remove">
@@ -106,21 +89,21 @@
                             -
                             <span class="visually-hidden">Entfernen</span>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
             <div class="bbuddy__entertainment">
                 <p class="bbuddy__output-type">Unterhaltung</p>
                 <div class="bbuddy__output-items">
-                    <div class="bbuddy__output-item">
+                    <!-- <div class="bbuddy__output-item">
                         <p class="bbuddy__output-name">CrunchyRoll</p>
                         <p class="bbuddy__output-amount">9,99€</p>
                         <button type="button" class="bbuddy__remove">
                             -
                             <span class="visually-hidden">Entfernen</span>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -128,15 +111,15 @@
                 <h3 class="bbuddy__add-headline">
                     Ausgabe hinzufügen
                 </h3>
-                <form class="bbuddy__add-form" action="">
+                <form class="bbuddy__add-form" action="javascript:addOutput()">
                     <div class="bbuddy__add-field">
-                        <label for="bbuddy__add-name">Ausgabenname</label>
-                        <input id="bbuddy__add-name" type="text" placeholder="Neue Ausgabe" class="bbuddy__add-name">
+                        <label for="bbuddy__add-output-name">Ausgabenname</label>
+                        <input id="bbuddy__add-output-name" type="text" placeholder="Neue Ausgabe" class="bbuddy__add-name">
                     </div>
 
                     <div class="bbuddy__add-field">
-                        <label for="bbuddy__add-type">Ausgabentyp</label>
-                        <select id="bbuddy__add-type" type="text" class="bbuddy__add-type">
+                        <label for="bbuddy__add-output-type">Ausgabentyp</label>
+                        <select id="bbuddy__add-output-type" type="text" class="bbuddy__add-type">
                             <option value="essential">Unerlässlich</option>
                             <option value="important">Wichtig</option>
                             <option value="entertainment">Unterhaltung</option>
@@ -145,8 +128,8 @@
                     
                     <div class="bbuddy__add-submit-wrapper">
                         <div class="bbuddy__add-field">
-                            <label for="bbuddy__add-price">Kosten</label>
-                            <input id="bbuddy__add-price" type="text" placeholder="Preis" class="bbuddy__add-price">
+                            <label for="bbuddy__add-output-price">Kosten</label>
+                            <input id="bbuddy__add-output-price" type="text" placeholder="Preis" class="bbuddy__add-price">
                         </div>
 
                         <button type="submit" class="bbuddy__add-button">
@@ -200,5 +183,7 @@
             </div>
         </section>
     </section>
+
+    <script src="main.js"></script>
 </body>
 </html>
