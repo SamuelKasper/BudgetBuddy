@@ -3,10 +3,6 @@
         {
             "name": "Gehalt",
             "value": 2000
-        },
-        {
-            "name": "Miete",
-            "value": 1200
         }
     ],
     "output": {
