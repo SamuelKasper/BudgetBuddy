@@ -1,26 +1,26 @@
 {
     "intake": [
         {
-            "name": "Kein Eintrag hinzugefügt",
+            "name": "Kein Eintrag",
             "value": "0"
         }
     ],
     "output": {
         "essential": [
             {
-                "name": "Kein Eintrag hinzugefügt",
+                "name": "Kein Eintrag",
                 "value": "0"
             }
         ],
         "important": [
             {
-                "name": "Kein Eintrag hinzugefügt",
+                "name": "Kein Eintrag",
                 "value": "0"
             }
         ],
         "entertainment": [
             {
-                "name": "Kein Eintrag hinzugefügt",
+                "name": "Kein Eintrag",
                 "value": "0"
             }
         ]
