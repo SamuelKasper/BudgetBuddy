@@ -1,153 +1,197 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BudgetBuddy - Haushaltsbuch">
-    <link rel="stylesheet" href="/main.css">
-    <link rel="manifest" href="/manifest.json">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="BudgetBuddy - Haushaltsbuch" />
+    <link rel="stylesheet" href="/main.css" />
+    <link rel="manifest" href="/manifest.json" />
     <title>BudgetBuddy</title>
-</head>
-<body>
+  </head>
+  <body>
     <section class="bbuddy">
-        <h1 class="bbuddy__headline">
-            BudgetBuddy
-        </h1>
-        <p class="bbuddy__disclaimer">
-            <strong>Deine Daten werden nicht gespeichert!</strong><br>
-            Bitte exportiere deine Daten wenn du zu einem späteren Zeitpunkt weiterarbeiten, oder deine Daten nochmal ansehen möchtest.
-        </p>
+      <h1 class="bbuddy__headline">BudgetBuddy</h1>
+      <p class="bbuddy__disclaimer">
+        <strong>Deine Daten werden nicht gespeichert!</strong><br />
+        Bitte exportiere deine Daten wenn du zu einem späteren Zeitpunkt
+        weiterarbeiten, oder deine Daten nochmal ansehen möchtest.
+      </p>
 
-        <div class="bbuddy__import-export">
-            <div class="bbuddy__import">
-                <label for="fileInput" class="bbuddy__import-label">Importieren</label>
-                <input type="file" id="fileInput" class="visually-hidden" accept=".json">
-            </div>
-
-            <button id="exportBtn" class="bbuddy__export" onclick="javascript:exportJson()">Exportieren</button>
+      <div class="bbuddy__import-export">
+        <div class="bbuddy__import">
+          <label for="fileInput" class="bbuddy__import-label"
+            >Importieren</label
+          >
+          <input
+            type="file"
+            id="fileInput"
+            class="visually-hidden"
+            accept=".json"
+          />
         </div>
 
-        <div class="bbuddy__intake">
-            <h2 class="bbuddy__subheadline">
-                Monatliche Einnahmen
-            </h2>
-            <div class="bbuddy__intake-items"></div>
-            <div class="bbuddy__add">
-                <h3 class="bbuddy__add-headline">
-                    Einnahme hinzufügen
-                </h3>
-                <form class="bbuddy__add-form" action="javascript:addIntakeToSession()" method="get">
-                    <div class="bbuddy__add-field">
-                        <label for="bbuddy__add-intake-name">Bezeichnung</label>
-                        <input id="bbuddy__add-intake-name" type="text" maxlength="25" name="name" placeholder="Gehalt" class="bbuddy__add-name">
-                    </div>
-                    
-                    <div class="bbuddy__add-submit-wrapper">
-                        <div class="bbuddy__add-field">
-                            <label for="bbuddy__add-intake-price">Wert</label>
-                            <input id="bbuddy__add-intake-price" type="number" min="0" step="0.01" name="value" placeholder="1500" class="bbuddy__add-price">
-                        </div>
+        <button
+          id="exportBtn"
+          class="bbuddy__export"
+          onclick="javascript:exportJson()"
+        >
+          Exportieren
+        </button>
+      </div>
 
-                        <button type="submit" class="bbuddy__add-button">
-                            +
-                            <span class="visually-hidden">Einnahme hinzufügen</span>
-                        </button>
-                    </div>
-                </form>
+      <div class="bbuddy__intake">
+        <h2 class="bbuddy__subheadline">Monatliche Einnahmen</h2>
+        <div class="bbuddy__intake-items">
+        </div>
+        <div class="bbuddy__add">
+          <h3 class="bbuddy__add-headline">Einnahme hinzufügen</h3>
+          <form
+            class="bbuddy__add-form"
+            action="javascript:addIntakeToSession()"
+            method="get"
+          >
+            <div class="bbuddy__add-field">
+              <label for="bbuddy__add-intake-name">Bezeichnung</label>
+              <input
+                id="bbuddy__add-intake-name"
+                type="text"
+                maxlength="25"
+                name="name"
+                placeholder="Gehalt"
+                class="bbuddy__add-name"
+              />
             </div>
+
+            <div class="bbuddy__add-submit-wrapper">
+              <div class="bbuddy__add-field">
+                <label for="bbuddy__add-intake-price">Wert</label>
+                <input
+                  id="bbuddy__add-intake-price"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  name="value"
+                  placeholder="1500"
+                  class="bbuddy__add-price"
+                />
+              </div>
+
+              <button type="submit" class="bbuddy__add-button">
+                +
+                <span class="visually-hidden">Einnahme hinzufügen</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="bbuddy__output">
+        <h2 class="bbuddy__subheadline">Monatliche Ausgaben</h2>
+        <div class="bbuddy__essential">
+          <p class="bbuddy__output-type">Unerlässlich</p>
+          <div class="bbuddy__output-items"></div>
         </div>
 
-        <div class="bbuddy__output">
-            <h2 class="bbuddy__subheadline">
-                Monatliche Ausgaben
-            </h2>
-            <div class="bbuddy__essential">
-                <p class="bbuddy__output-type">Unerlässlich</p>
-                <div class="bbuddy__output-items">
-                </div>
-            </div>
-
-            <div class="bbuddy__important">
-                <p class="bbuddy__output-type">Wichtig</p>
-                <div class="bbuddy__output-items">
-                </div>
-            </div>
-
-            <div class="bbuddy__entertainment">
-                <p class="bbuddy__output-type">Unterhaltung</p>
-                <div class="bbuddy__output-items">
-                </div>
-            </div>
-
-            <div class="bbuddy__add">
-                <h3 class="bbuddy__add-headline">
-                    Ausgabe hinzufügen
-                </h3>
-                <form class="bbuddy__add-form" action="javascript:addOutputToSession()">
-                    <div class="bbuddy__add-field">
-                        <label for="bbuddy__add-output-name">Ausgabenname</label>
-                        <input id="bbuddy__add-output-name" type="text" maxlength="25" placeholder="Neue Ausgabe" class="bbuddy__add-name">
-                    </div>
-
-                    <div class="bbuddy__add-field">
-                        <label for="bbuddy__add-output-type">Ausgabentyp</label>
-                        <select id="bbuddy__add-output-type" type="text" class="bbuddy__add-type">
-                            <option value="essential">Unerlässlich</option>
-                            <option value="important">Wichtig</option>
-                            <option value="entertainment">Unterhaltung</option>
-                        </select>
-                    </div>
-                    
-                    <div class="bbuddy__add-submit-wrapper">
-                        <div class="bbuddy__add-field">
-                            <label for="bbuddy__add-output-price">Kosten</label>
-                            <input id="bbuddy__add-output-price" type="number" min="0" step="0.01" placeholder="Preis" class="bbuddy__add-price">
-                        </div>
-
-                        <button type="submit" class="bbuddy__add-button">
-                            +
-                            <span class="visually-hidden">Einnahme hinzufügen</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
+        <div class="bbuddy__important">
+          <p class="bbuddy__output-type">Wichtig</p>
+          <div class="bbuddy__output-items"></div>
         </div>
 
-        <section class="bbuddy__balance-section">
-            <h2 class="bbuddy__subheadline">
-                Monatsbilanz
-            </h2>
-            <div class="bbuddy__balance-row">
-                <p class="bbuddy__total-label">Einnahmen</p>
-                <p class="bbuddy__total-intake-value"></p>
-            </div>
-            <div class="bbuddy__balance-row">
-                <p class="bbuddy__total-label">Ausgaben</p>
-                <p class="bbuddy__total-output-value"></p>
-            </div>
-            <div class="bbuddy__balance-row bbuddy__balance-row--bold">
-                <p class="bbuddy__total-label">Bilanz</p>
-                <p class="bbuddy__total-balance-value"></p>
-            </div>
-        </section>
+        <div class="bbuddy__entertainment">
+          <p class="bbuddy__output-type">Unterhaltung</p>
+          <div class="bbuddy__output-items"></div>
+        </div>
 
-        <section class="bbuddy__preview-section">
-            <h2 class="bbuddy__subheadline">
-                Vorschau
-            </h2>
-
-            <p class="bbuddy__preview-info">So viel sparst du innerhalb der nächsten 12 Monate</p>
+        <div class="bbuddy__add">
+          <h3 class="bbuddy__add-headline">Ausgabe hinzufügen</h3>
+          <form
+            class="bbuddy__add-form"
+            action="javascript:addOutputToSession()"
+          >
+            <div class="bbuddy__add-field">
+              <label for="bbuddy__add-output-name">Ausgabenname</label>
+              <input
+                id="bbuddy__add-output-name"
+                type="text"
+                maxlength="25"
+                placeholder="Neue Ausgabe"
+                class="bbuddy__add-name"
+              />
+            </div>
 
             <div class="bbuddy__add-field">
-                <label for="bbuddy__preview-current">Aktueller Kontostand</label>
-                <input type="number" id="bbuddy__preview-current" step="0.01" name="current" placeholder="0">
+              <label for="bbuddy__add-output-type">Ausgabentyp</label>
+              <select
+                id="bbuddy__add-output-type"
+                type="text"
+                class="bbuddy__add-type"
+              >
+                <option value="essential">Unerlässlich</option>
+                <option value="important">Wichtig</option>
+                <option value="entertainment">Unterhaltung</option>
+              </select>
             </div>
 
-            <div class="bbuddy__preview">
+            <div class="bbuddy__add-submit-wrapper">
+              <div class="bbuddy__add-field">
+                <label for="bbuddy__add-output-price">Kosten</label>
+                <input
+                  id="bbuddy__add-output-price"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  placeholder="Preis"
+                  class="bbuddy__add-price"
+                />
+              </div>
+
+              <button type="submit" class="bbuddy__add-button">
+                +
+                <span class="visually-hidden">Einnahme hinzufügen</span>
+              </button>
             </div>
-        </section>
+          </form>
+        </div>
+      </div>
+
+      <section class="bbuddy__balance-section">
+        <h2 class="bbuddy__subheadline">Monatsbilanz</h2>
+        <div class="bbuddy__balance-row">
+          <p class="bbuddy__total-label">Einnahmen</p>
+          <p class="bbuddy__total-intake-value"></p>
+        </div>
+        <div class="bbuddy__balance-row">
+          <p class="bbuddy__total-label">Ausgaben</p>
+          <p class="bbuddy__total-output-value"></p>
+        </div>
+        <div class="bbuddy__balance-row bbuddy__balance-row--bold">
+          <p class="bbuddy__total-label">Bilanz</p>
+          <p class="bbuddy__total-balance-value"></p>
+        </div>
+      </section>
+
+      <section class="bbuddy__preview-section">
+        <h2 class="bbuddy__subheadline">Vorschau</h2>
+
+        <p class="bbuddy__preview-info">
+          So viel sparst du innerhalb der nächsten 12 Monate
+        </p>
+
+        <div class="bbuddy__add-field">
+          <label for="bbuddy__preview-current">Aktueller Kontostand</label>
+          <input
+            type="number"
+            id="bbuddy__preview-current"
+            step="0.01"
+            name="current"
+            placeholder="0"
+          />
+        </div>
+
+        <div class="bbuddy__preview"></div>
+      </section>
     </section>
 
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

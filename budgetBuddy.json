@@ -1,8 +1,28 @@
 {
-    "intake": [],
+    "intake": [
+        {
+            "name": "Kein Eintrag hinzugefügt",
+            "value": "0"
+        }
+    ],
     "output": {
-        "essential": [],
-        "important": [],
-        "entertainment": []
+        "essential": [
+            {
+                "name": "Kein Eintrag hinzugefügt",
+                "value": "0"
+            }
+        ],
+        "important": [
+            {
+                "name": "Kein Eintrag hinzugefügt",
+                "value": "0"
+            }
+        ],
+        "entertainment": [
+            {
+                "name": "Kein Eintrag hinzugefügt",
+                "value": "0"
+            }
+        ]
     }
 }
