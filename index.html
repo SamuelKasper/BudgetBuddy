@@ -12,11 +12,18 @@
             BudgetBuddy
         </h1>
         <p class="bbuddy__disclaimer">
-            Bla bla es werden keine Daten gespeichert...
+            <strong>Deine Daten werden nicht gespeichert!</strong><br>
+            Bitte exportiere deine Daten wenn du zu einem späteren Zeitpunkt weiterarbeiten, oder deine Daten nochmal ansehen möchtest.
         </p>
 
-        <input type="file" id="fileInput" accept=".json">
-        <button id="exportBtn" onclick="javascript:exportJson()">Exportieren</button>
+        <div class="bbuddy__import-export">
+            <div class="bbuddy__import">
+                <label for="fileInput" class="bbuddy__import-label">Importieren</label>
+                <input type="file" id="fileInput" class="visually-hidden" accept=".json">
+            </div>
+
+            <button id="exportBtn" class="bbuddy__export" onclick="javascript:exportJson()">Exportieren</button>
+        </div>
 
         <div class="bbuddy__intake">
             <h2 class="bbuddy__subheadline">
