@@ -110,7 +110,6 @@ function createEntries(data) {
   calculateBalance(intakeTotal, outputTotal);
 
   let removeBtns = [...document.querySelectorAll(".bbuddy__remove")];
-  console.log(removeBtns);
   removeBtns.forEach((btn) => {
     btn.addEventListener("click", function (e) {
       const parent = e.target.parentElement;
