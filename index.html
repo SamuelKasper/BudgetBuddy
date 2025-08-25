@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="BudgetBuddy - Haushaltsbuch">
     <link rel="stylesheet" href="/main.css">
     <title>BudgetBuddy</title>
 </head>
@@ -62,58 +63,18 @@
             <div class="bbuddy__essential">
                 <p class="bbuddy__output-type">Unerlässlich</p>
                 <div class="bbuddy__output-items">
-                    <!-- <div class="bbuddy__output-item">
-                        <p class="bbuddy__output-name">Miete</p>
-                        <p class="bbuddy__output-amount">1300€</p>
-                        <button type="button" class="bbuddy__remove">
-                            -
-                            <span class="visually-hidden">Entfernen</span>
-                        </button>
-                    </div>
-                    <div class="bbuddy__output-item">
-                        <p class="bbuddy__output-name">Lebensmittel</p>
-                        <p class="bbuddy__output-amount">130€</p>
-                        <button type="button" class="bbuddy__remove">
-                            -
-                            <span class="visually-hidden">Entfernen</span>
-                        </button>
-                    </div> -->
                 </div>
             </div>
 
             <div class="bbuddy__important">
                 <p class="bbuddy__output-type">Wichtig</p>
                 <div class="bbuddy__output-items">
-                    <!-- <div class="bbuddy__output-item">
-                        <p class="bbuddy__output-name">Handyvertrag</p>
-                        <p class="bbuddy__output-amount">9,99€</p>
-                        <button type="button" class="bbuddy__remove">
-                            -
-                            <span class="visually-hidden">Entfernen</span>
-                        </button>
-                    </div>
-                    <div class="bbuddy__output-item">
-                        <p class="bbuddy__output-name">DB Ticket</p>
-                        <p class="bbuddy__output-amount">60€</p>
-                        <button type="button" class="bbuddy__remove">
-                            -
-                            <span class="visually-hidden">Entfernen</span>
-                        </button>
-                    </div> -->
                 </div>
             </div>
 
             <div class="bbuddy__entertainment">
                 <p class="bbuddy__output-type">Unterhaltung</p>
                 <div class="bbuddy__output-items">
-                    <!-- <div class="bbuddy__output-item">
-                        <p class="bbuddy__output-name">CrunchyRoll</p>
-                        <p class="bbuddy__output-amount">9,99€</p>
-                        <button type="button" class="bbuddy__remove">
-                            -
-                            <span class="visually-hidden">Entfernen</span>
-                        </button>
-                    </div> -->
                 </div>
             </div>
 
@@ -174,9 +135,11 @@
                 Vorschau
             </h2>
 
+            <p class="bbuddy__preview-info">So viel sparst du innerhalb der nächsten 12 Monate</p>
+
             <div class="bbuddy__add-field">
                 <label for="bbuddy__preview-current">Aktueller Kontostand</label>
-                <input type="text" id="bbuddy__preview-current" name="current" placeholder="0">
+                <input type="number" id="bbuddy__preview-current" step="0.01" name="current" placeholder="0">
             </div>
 
             <div class="bbuddy__preview">
