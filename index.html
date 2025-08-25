@@ -15,6 +15,9 @@
             Bla bla es werden keine Daten gespeichert...
         </p>
 
+        <input type="file" id="fileInput" accept=".json">
+        <button id="exportBtn" onclick="javascript:exportJson()">Exportieren</button>
+
         <div class="bbuddy__intake">
             <h2 class="bbuddy__subheadline">
                 Monatliche Einnahmen
@@ -24,7 +27,7 @@
                 <h3 class="bbuddy__add-headline">
                     Einnahme hinzufügen
                 </h3>
-                <form class="bbuddy__add-form" action="javascript:addIntakeToJson()" method="get">
+                <form class="bbuddy__add-form" action="javascript:addIntakeToSession()" method="get">
                     <div class="bbuddy__add-field">
                         <label for="bbuddy__add-intake-name">Bezeichnung</label>
                         <input id="bbuddy__add-intake-name" type="text" name="name" placeholder="Gehalt" class="bbuddy__add-name">
@@ -111,7 +114,7 @@
                 <h3 class="bbuddy__add-headline">
                     Ausgabe hinzufügen
                 </h3>
-                <form class="bbuddy__add-form" action="javascript:addOutputToJson()">
+                <form class="bbuddy__add-form" action="javascript:addOutputToSession()">
                     <div class="bbuddy__add-field">
                         <label for="bbuddy__add-output-name">Ausgabenname</label>
                         <input id="bbuddy__add-output-name" type="text" placeholder="Neue Ausgabe" class="bbuddy__add-name">

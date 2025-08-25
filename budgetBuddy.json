@@ -1,40 +1,8 @@
 {
-    "intake": [
-        {
-            "name": "Gehalt",
-            "value": 2000
-        }
-    ],
+    "intake": [],
     "output": {
-        
-            "essential": [
-                {
-                    "name": "Miete",
-                    "value": 1750
-                },
-                {
-                    "name": "Lebensmittel",
-                    "value": 130
-                }
-            ],
-       
-            "important": [
-                {
-                    "name": "Handyvertrag",
-                    "value": 9.99
-                },
-                {
-                    "name": "DB Ticket",
-                    "value": 60
-                }
-            ],
-       
-            "entertainment": [
-                {
-                    "name": "Netflix",
-                    "value": 24.49
-                }
-            ]
-        
+        "essential": [],
+        "important": [],
+        "entertainment": []
     }
 }
