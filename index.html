@@ -37,13 +37,13 @@
                 <form class="bbuddy__add-form" action="javascript:addIntakeToSession()" method="get">
                     <div class="bbuddy__add-field">
                         <label for="bbuddy__add-intake-name">Bezeichnung</label>
-                        <input id="bbuddy__add-intake-name" type="text" name="name" placeholder="Gehalt" class="bbuddy__add-name">
+                        <input id="bbuddy__add-intake-name" type="text" maxlength="25" name="name" placeholder="Gehalt" class="bbuddy__add-name">
                     </div>
                     
                     <div class="bbuddy__add-submit-wrapper">
                         <div class="bbuddy__add-field">
                             <label for="bbuddy__add-intake-price">Wert</label>
-                            <input id="bbuddy__add-intake-price" type="text" name="value" placeholder="1500" class="bbuddy__add-price">
+                            <input id="bbuddy__add-intake-price" type="number" min="0" step="0.01" name="value" placeholder="1500" class="bbuddy__add-price">
                         </div>
 
                         <button type="submit" class="bbuddy__add-button">
@@ -124,7 +124,7 @@
                 <form class="bbuddy__add-form" action="javascript:addOutputToSession()">
                     <div class="bbuddy__add-field">
                         <label for="bbuddy__add-output-name">Ausgabenname</label>
-                        <input id="bbuddy__add-output-name" type="text" placeholder="Neue Ausgabe" class="bbuddy__add-name">
+                        <input id="bbuddy__add-output-name" type="text" maxlength="25" placeholder="Neue Ausgabe" class="bbuddy__add-name">
                     </div>
 
                     <div class="bbuddy__add-field">
@@ -139,7 +139,7 @@
                     <div class="bbuddy__add-submit-wrapper">
                         <div class="bbuddy__add-field">
                             <label for="bbuddy__add-output-price">Kosten</label>
-                            <input id="bbuddy__add-output-price" type="text" placeholder="Preis" class="bbuddy__add-price">
+                            <input id="bbuddy__add-output-price" type="number" min="0" step="0.01" placeholder="Preis" class="bbuddy__add-price">
                         </div>
 
                         <button type="submit" class="bbuddy__add-button">

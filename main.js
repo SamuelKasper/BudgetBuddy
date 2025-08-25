@@ -181,6 +181,7 @@ function createPreview(balance) {
  */
 async function addIntake(name, value) {
   let intakeItems = document.querySelector(".bbuddy__intake-items");
+  value = Number(value.replace(',', '.'));
 
   let buttonSpan = document.createElement("span");
   buttonSpan.classList.add("visually-hidden");
