@@ -1,3 +1,9 @@
+:root {
+  --blue: #022d65;
+  --blue-darkest: #020236;
+  --gray: #434343;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -24,8 +30,9 @@ body {
 }
 
 .bbuddy {
-  padding: clamp(1rem, 0.554rem + 2.038vw, 3rem) clamp(1rem, -1.184rem + 9.32vw, 10rem);
-  background-color: #124c96;
+  padding: clamp(1rem, 0.554rem + 2.038vw, 3rem)
+    clamp(1rem, -1.184rem + 9.32vw, 10rem);
+  background-image: linear-gradient(var(--blue), var(--blue-darkest));
   color: #fff;
   display: flex;
   justify-content: center;
@@ -35,7 +42,7 @@ body {
 
 .bbuddy__headline {
   font-size: 2.75rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   letter-spacing: 1px;
 }
 
@@ -94,9 +101,10 @@ body {
   background-color: #fcfcfc;
   color: #38393b;
   border-radius: 1rem;
-  padding: clamp(1.5rem, 1.277rem + 1.019vw, 2.5rem) clamp(1rem, 0.777rem + 1.019vw, 2rem);
+  padding: clamp(1.5rem, 1.277rem + 1.019vw, 2.5rem)
+    clamp(1rem, 0.777rem + 1.019vw, 2rem);
   margin-top: 2rem;
-  width: clamp(19rem, 15.433rem + 16.306vw, 35rem);
+  width: 100%;
 }
 
 .bbuddy__essential,
@@ -130,6 +138,12 @@ body {
 .bbuddy__intake-headline,
 .bbuddy__output-headline {
   font-weight: 600;
+}
+
+.bbuddy__intake-item-wrapper {
+  flex: 1;
+  display: flex;
+  padding: .25rem 0;
 }
 
 .bbuddy__output-item {
@@ -188,7 +202,7 @@ body {
   input:focus-visible,
   select:active,
   select:focus-visible {
-    outline: 1px solid #124c96;
+    outline: 1px solid  var(--blue);
   }
 }
 
@@ -210,7 +224,7 @@ body {
   width: 2rem;
 
   font-size: 1.5rem;
-  background-color: #124c96;
+  background-color: var(--blue);
   color: #fcfcfc;
   border: none;
   border-radius: 0.25rem;
@@ -222,20 +236,18 @@ body {
 }
 
 .bbuddy__remove {
-  font-size: 1.5rem;
-  height: 100%;
-  min-width: 2rem;
-  aspect-ratio: 1;
-  background-color: #f1701b;
+  min-width: 2.25rem;
+  background-color: var(--gray);
   transition: 0.3s;
-  color: #fff;
+  fill: #fff;
   border: none;
   border-radius: 0 0.25rem 0.25rem 0;
-  padding-bottom: 0.375rem;
   cursor: pointer;
+  display: flex;
+  padding: .25rem;
 
   &:hover {
-    background-color: #c05712;
+    background-color: #313131;
   }
 }
 
@@ -259,7 +271,7 @@ body {
 .bbuddy__balance-row--bold {
   font-weight: 600;
   font-size: 1.25rem;
-  padding: .5rem .25rem;
+  padding: 0.5rem 0.25rem;
   height: unset;
 }
 
@@ -273,8 +285,23 @@ body {
 .bbuddy__preview-info {
   font-weight: 600;
   margin-bottom: 1rem;
-  padding: .5rem;
+  padding: 0.5rem;
   background-color: #f5f5f5;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   border-left: 5px solid #124c96;
+}
+
+@media screen and (min-width: 48rem) {
+  .bbuddy__intake,
+  .bbuddy__output,
+  .bbuddy__balance-section,
+  .bbuddy__preview-section {
+    background-color: #fcfcfc;
+    color: #38393b;
+    border-radius: 1rem;
+    padding: clamp(1.5rem, 1.277rem + 1.019vw, 2.5rem)
+      clamp(1rem, 0.777rem + 1.019vw, 2rem);
+    margin-top: 2rem;
+    width: clamp(19rem, 15.433rem + 16.306vw, 35rem);
+  }
 }
