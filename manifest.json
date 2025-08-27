@@ -2,7 +2,7 @@
   "name": "Budget Buddy",
   "short_name": "BBuddy",
   "description": "Haushaltsbuch",
-  "start_url": "/",
+  "start_url": "/BudgetBuddy/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
