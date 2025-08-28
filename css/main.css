@@ -1,7 +1,12 @@
 :root {
-  --blue: #022d65;
-  --blue-darkest: #020236;
+  --blue-bright: rgb(26, 119, 226);
+  --blue: #053b83;
+  --blue-darkest: #001555;
   --gray: #434343;
+  --gray-dark: #2b2b2b;
+  --black: #1e1e1e;
+  --green: #03d33e;
+  --red: #d10934;
 }
 
 * {
@@ -32,16 +37,19 @@ body {
 .bbuddy {
   padding: clamp(1rem, 0.554rem + 2.038vw, 3rem)
     clamp(1rem, -1.184rem + 9.32vw, 10rem);
-  background-image: linear-gradient(var(--blue), var(--blue-darkest));
+  /* background-image: linear-gradient(var(--blue), var(--blue-darkest)); */
+  background-color: var(--black);
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .bbuddy__headline {
   font-size: 2.75rem;
+  text-transform: uppercase;
   margin-bottom: 0.5rem;
   letter-spacing: 1px;
 }
@@ -94,6 +102,7 @@ body {
   display: none;
 }
 
+/* OLD */
 .bbuddy__intake,
 .bbuddy__output,
 .bbuddy__balance-section,
@@ -143,7 +152,7 @@ body {
 .bbuddy__intake-item-wrapper {
   flex: 1;
   display: flex;
-  padding: .25rem 0;
+  padding: 0.25rem 0;
 }
 
 .bbuddy__output-item {
@@ -202,7 +211,7 @@ body {
   input:focus-visible,
   select:active,
   select:focus-visible {
-    outline: 1px solid  var(--blue);
+    outline: 1px solid var(--blue);
   }
 }
 
@@ -244,7 +253,7 @@ body {
   border-radius: 0 0.25rem 0.25rem 0;
   cursor: pointer;
   display: flex;
-  padding: .25rem;
+  padding: 0.25rem;
 
   &:hover {
     background-color: #313131;

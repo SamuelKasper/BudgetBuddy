@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="BudgetBuddy - Haushaltsbuch" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <title>Budget Buddy</title>
+  </head>
+  <body>
+    <section class="bbuddy">
+      <h1 class="bbuddy__headline">Budget Buddy</h1>
+      <p class="bbuddy__disclaimer">
+        <strong>Deine Daten werden nicht gespeichert!</strong><br />
+        Bitte exportiere deine Daten wenn du zu einem späteren Zeitpunkt
+        weiterarbeiten, oder deine Daten nochmal ansehen möchtest.
+      </p>
+
+      <div class="bbuddy__import-export">
+        <div class="bbuddy__import">
+          <label for="fileInput" class="bbuddy__import-label"
+            >Importieren</label
+          >
+          <input
+            type="file"
+            id="fileInput"
+            class="visually-hidden"
+            accept=".json"
+          />
+        </div>
+
+        <button
+          id="exportBtn"
+          class="bbuddy__export"
+          onclick="javascript:exportJson()">
+          Exportieren
+        </button>
+      </div>
+
+      <section class="bbuddy__preview-section">
+        <h2 class="bbuddy__subheadline">Vorschau</h2>
+
+        <p class="bbuddy__preview-info">
+          So viel sparst du innerhalb der nächsten 12 Monate
+        </p>
+
+        <div class="bbuddy__add-field">
+          <label for="bbuddy__preview-current">Aktueller Kontostand</label>
+          <input
+            type="number"
+            id="bbuddy__preview-current"
+            step="0.01"
+            name="current"
+            placeholder="0"
+          />
+        </div>
+
+        <div class="bbuddy__preview"></div>
+      </section>
+    </section>
+
+    <script src="main.js"></script>
+  </body>
+</html>

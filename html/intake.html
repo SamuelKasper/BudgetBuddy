@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="BudgetBuddy - Haushaltsbuch" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="manifest" href="../manifest.json" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png" />
+    <title>Budget Buddy</title>
+  </head>
+  <body>
+    <section class="bbuddy">
+      <h1 class="bbuddy__headline">Budget Buddy</h1>
+      <p class="bbuddy__disclaimer">
+        <strong>Deine Daten werden nicht gespeichert!</strong><br />
+        Bitte exportiere deine Daten wenn du zu einem späteren Zeitpunkt
+        weiterarbeiten, oder deine Daten nochmal ansehen möchtest.
+      </p>
+
+      <div class="bbuddy__import-export">
+        <div class="bbuddy__import">
+          <label for="fileInput" class="bbuddy__import-label"
+            >Importieren</label
+          >
+          <input
+            type="file"
+            id="fileInput"
+            class="visually-hidden"
+            accept=".json"
+          />
+        </div>
+
+        <button
+          id="exportBtn"
+          class="bbuddy__export"
+          onclick="javascript:exportJson()">
+          Exportieren
+        </button>
+      </div>
+
+      <div class="bbuddy__intake">
+        <h2 class="bbuddy__subheadline">Monatliche Einnahmen</h2>
+        <div class="bbuddy__intake-items"></div>
+        <div class="bbuddy__add">
+          <h3 class="bbuddy__add-headline">Einnahme hinzufügen</h3>
+          <form
+            class="bbuddy__add-form"
+            id="bbuddy__add-form"
+          >
+            <div class="bbuddy__add-field">
+              <label for="bbuddy__add-intake-name">Bezeichnung</label>
+              <input
+                id="bbuddy__add-intake-name"
+                type="text"
+                maxlength="25"
+                name="name"
+                placeholder="Gehalt"
+                class="bbuddy__add-name"
+              />
+            </div>
+
+            <div class="bbuddy__add-submit-wrapper">
+              <div class="bbuddy__add-field">
+                <label for="bbuddy__add-intake-price">Wert</label>
+                <input
+                  id="bbuddy__add-intake-price"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  name="value"
+                  placeholder="1500"
+                  class="bbuddy__add-price"
+                />
+              </div>
+
+              <button type="submit" class="bbuddy__add-button">
+                +
+                <span class="visually-hidden">Einnahme hinzufügen</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script src="/js/intake.js"></script>
+  </body>
+</html>

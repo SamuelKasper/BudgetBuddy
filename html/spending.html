@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="BudgetBuddy - Haushaltsbuch" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="manifest" href="../manifest.json" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png" />
+    <title>Budget Buddy</title>
+  </head>
+  <body>
+    <section class="bbuddy">
+      <h1 class="bbuddy__headline">Budget Buddy</h1>
+      <p class="bbuddy__disclaimer">
+        <strong>Deine Daten werden nicht gespeichert!</strong><br />
+        Bitte exportiere deine Daten wenn du zu einem späteren Zeitpunkt
+        weiterarbeiten, oder deine Daten nochmal ansehen möchtest.
+      </p>
+
+      <div class="bbuddy__import-export">
+        <div class="bbuddy__import">
+          <label for="fileInput" class="bbuddy__import-label"
+            >Importieren</label
+          >
+          <input
+            type="file"
+            id="fileInput"
+            class="visually-hidden"
+            accept=".json"
+          />
+        </div>
+
+        <button
+          id="exportBtn"
+          class="bbuddy__export"
+          onclick="javascript:exportJson()">
+          Exportieren
+        </button>
+      </div>
+
+      <div class="bbuddy__output">
+        <h2 class="bbuddy__subheadline">Monatliche Ausgaben</h2>
+        <div class="bbuddy__essential">
+          <p class="bbuddy__output-type">Unerlässlich</p>
+          <div class="bbuddy__output-items"></div>
+        </div>
+
+        <div class="bbuddy__important">
+          <p class="bbuddy__output-type">Wichtig</p>
+          <div class="bbuddy__output-items"></div>
+        </div>
+
+        <div class="bbuddy__entertainment">
+          <p class="bbuddy__output-type">Unterhaltung</p>
+          <div class="bbuddy__output-items"></div>
+        </div>
+
+        <div class="bbuddy__add">
+          <h3 class="bbuddy__add-headline">Ausgabe hinzufügen</h3>
+          <form
+            class="bbuddy__add-form"
+            id="bbuddy__add-form"
+          >
+            <div class="bbuddy__add-field">
+              <label for="bbuddy__add-output-name">Ausgabenname</label>
+              <input
+                id="bbuddy__add-output-name"
+                type="text"
+                maxlength="25"
+                placeholder="Neue Ausgabe"
+                class="bbuddy__add-name"
+              />
+            </div>
+
+            <div class="bbuddy__add-field">
+              <label for="bbuddy__add-output-type">Ausgabentyp</label>
+              <select
+                id="bbuddy__add-output-type"
+                type="text"
+                class="bbuddy__add-type"
+              >
+                <option value="essential">Unerlässlich</option>
+                <option value="important">Wichtig</option>
+                <option value="entertainment">Unterhaltung</option>
+              </select>
+            </div>
+
+            <div class="bbuddy__add-submit-wrapper">
+              <div class="bbuddy__add-field">
+                <label for="bbuddy__add-output-price">Kosten</label>
+                <input
+                  id="bbuddy__add-output-price"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  placeholder="Preis"
+                  class="bbuddy__add-price"
+                />
+              </div>
+
+              <button type="submit" class="bbuddy__add-button">
+                +
+                <span class="visually-hidden">Ausgabe hinzufügen</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script src="/js/spendings.js"></script>
+  </body>
+</html>
