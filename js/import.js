@@ -82,7 +82,7 @@ function calculateTotal() {
 
   if (balanceEl && balance && balance > 0) {
     balanceEl.classList.add("bbuddy__dashboard-item--positive");
-  } else if (balance && balance < 0) {
+  } else if (balanceEl && balance && balance < 0) {
     balanceEl.classList.add("bbuddy__dashboard-item--negative");
   }
 }

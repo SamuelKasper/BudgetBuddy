@@ -39,6 +39,12 @@ function intakesHandler(data) {
 
     sessionStorage.setItem("intakesTotal", intakeTotal);
 
+    if(intakeItems.childElementCount <= 0){
+      intakeItems.classList.add("visually-hidden");
+    }else{
+      intakeItems.classList.remove("visually-hidden");
+    }
+
     let removeBtns = [...document.querySelectorAll(".bbuddy__remove")];
     removeBtns.forEach((btn) => {
       btn.addEventListener("click", function (e) {

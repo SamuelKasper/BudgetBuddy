@@ -33,7 +33,9 @@ function getSpendings() {
   let data = sessionStorage.getItem("bbuddy-spending");
   return (
     JSON.parse(data) ?? {
-      essential: [], important: [], entertainment: [],
+      essential: [],
+      important: [],
+      entertainment: [],
     }
   );
 }
@@ -90,31 +92,24 @@ async function createSpendingsHtml(name, type, value, id) {
 }
 
 function spendingsHandler(data) {
-  if (
-    "essential" in data &&
-    "important" in data &&
-    "entertainment" in data
-  ) {
-    let essentialsEl = document.querySelector(
-      ".bbuddy__essential > .bbuddy__output-items"
-    );
-    let importantEl = document.querySelector(
-      ".bbuddy__important > .bbuddy__output-items"
-    );
-    let entertainmentEl = document.querySelector(
-      ".bbuddy__entertainment > .bbuddy__output-items"
-    );
+  if ("essential" in data && "important" in data && "entertainment" in data) {
+    let essentialsEl = document.querySelector(".bbuddy__essential");
+    let essentialsItemsEl = essentialsEl.querySelector(".bbuddy__output-items");
+    let importantEl = document.querySelector(".bbuddy__important");
+    let importantItemsEl = importantEl.querySelector(".bbuddy__output-items");
+    let entertainmentEl = document.querySelector(".bbuddy__entertainment");
+    let entertainmentItemsEl = entertainmentEl.querySelector(".bbuddy__output-items");
 
-    essentialsEl.innerHTML = "";
-    importantEl.innerHTML = "";
-    entertainmentEl.innerHTML = "";
+    essentialsItemsEl.innerHTML = "";
+    importantItemsEl.innerHTML = "";
+    entertainmentItemsEl.innerHTML = "";
 
     let essentials = data?.essential;
     let important = data?.important;
     let entertainment = data?.entertainment;
     let outputTotal = 0;
 
-    for(let key in essentials) {
+    for (let key in essentials) {
       createSpendingsHtml(
         essentials[key].name,
         "essential",
@@ -122,9 +117,9 @@ function spendingsHandler(data) {
         essentials[key].id
       );
       outputTotal += Number(essentials[key].value);
-    };
+    }
 
-    for(let key in important) {
+    for (let key in important) {
       createSpendingsHtml(
         important[key].name,
         "important",
@@ -132,9 +127,9 @@ function spendingsHandler(data) {
         important[key].id
       );
       outputTotal += Number(important[key].value);
-    };
+    }
 
-    for(let key in entertainment) {
+    for (let key in entertainment) {
       createSpendingsHtml(
         entertainment[key].name,
         "entertainment",
@@ -142,9 +137,25 @@ function spendingsHandler(data) {
         entertainment[key].id
       );
       outputTotal += Number(entertainment[key].value);
-    };
+    }
 
     sessionStorage.setItem("spendingsTotal", outputTotal);
+
+    if(essentialsItemsEl.childElementCount <= 0){
+      essentialsEl.classList.add("visually-hidden");
+    }else{
+      essentialsEl.classList.remove("visually-hidden");
+    }
+    if(importantItemsEl.childElementCount <= 0){
+      importantEl.classList.add("visually-hidden");
+    }else{
+      importantEl.classList.remove("visually-hidden");
+    }
+    if(entertainmentItemsEl.childElementCount <= 0){
+      entertainmentEl.classList.add("visually-hidden");
+    }else{
+      entertainmentEl.classList.remove("visually-hidden");
+    }
 
     let removeBtns = [...document.querySelectorAll(".bbuddy__remove")];
     removeBtns.forEach((btn) => {
