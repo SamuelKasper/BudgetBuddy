@@ -77,6 +77,7 @@ body {
   margin-bottom: 2rem;
 }
 
+.bbuddy__button,
 .bbuddy__import-label,
 .bbuddy__export {
   font-family: Calibri, Arial;
@@ -93,9 +94,14 @@ body {
   border: none;
 }
 
+.bbuddy__button:hover,
 .bbuddy__export:hover,
 .bbuddy__import-label:hover {
   background-color: #d6d6d6;
+}
+
+.bbuddy__button {
+  text-decoration: none;
 }
 
 .bbuddy__import-button {
@@ -258,6 +264,10 @@ body {
   &:hover {
     background-color: #313131;
   }
+}
+
+.bbuddy__button {
+
 }
 
 .bbuddy__remove-svg {

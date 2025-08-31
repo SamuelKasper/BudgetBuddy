@@ -6,9 +6,23 @@
     <meta name="description" content="BudgetBuddy - Haushaltsbuch" />
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="manifest" href="../manifest.json" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../favicon-16x16.png"
+    />
     <title>Budget Buddy</title>
   </head>
   <body>
@@ -21,6 +35,8 @@
       </p>
 
       <div class="bbuddy__import-export">
+        <a href="/index.html" class="bbuddy__button"> Zum Dashboard </a>
+
         <div class="bbuddy__import">
           <label for="fileInput" class="bbuddy__import-label"
             >Importieren</label
@@ -36,7 +52,8 @@
         <button
           id="exportBtn"
           class="bbuddy__export"
-          onclick="javascript:exportJson()">
+          onclick="javascript:exportJson()"
+        >
           Exportieren
         </button>
       </div>
@@ -60,10 +77,7 @@
 
         <div class="bbuddy__add">
           <h3 class="bbuddy__add-headline">Ausgabe hinzufügen</h3>
-          <form
-            class="bbuddy__add-form"
-            id="bbuddy__add-form"
-          >
+          <form class="bbuddy__add-form" id="bbuddy__add-form">
             <div class="bbuddy__add-field">
               <label for="bbuddy__add-output-name">Ausgabenname</label>
               <input
@@ -109,10 +123,6 @@
           </form>
         </div>
       </div>
-
-      <a href="/index.html" class="bbuddy__button">
-        Zurück zum Dashboard
-      </a>
     </section>
 
     <script src="/js/import.js"></script>
