@@ -19,11 +19,11 @@ function setSpendings() {
   let type = document.getElementById("bbuddy__add-output-type").value;
   let uuid = self.crypto.randomUUID();
   if (type == "essential") {
-    data.spending.essential.push({ id: uuid, name: name, value: value });
+    data.essential.push({ id: uuid, name: name, value: value });
   } else if (type == "important") {
-    data.spending.important.push({ id: uuid, name: name, value: value });
+    data.important.push({ id: uuid, name: name, value: value });
   } else if (type == "entertainment") {
-    data.spending.entertainment.push({ id: uuid, name: name, value: value });
+    data.entertainment.push({ id: uuid, name: name, value: value });
   }
   sessionStorage.setItem("bbuddy-spending", JSON.stringify(data));
   spendingsHandler(data);
@@ -33,7 +33,7 @@ function getSpendings() {
   let data = sessionStorage.getItem("bbuddy-spending");
   return (
     JSON.parse(data) ?? {
-      spending: { essential: [], important: [], entertainment: [] },
+      essential: [], important: [], entertainment: [],
     }
   );
 }
@@ -91,10 +91,9 @@ async function createSpendingsHtml(name, type, value, id) {
 
 function spendingsHandler(data) {
   if (
-    "spending" in data &&
-    "essential" in data.spending &&
-    "important" in data.spending &&
-    "entertainment" in data.spending
+    "essential" in data &&
+    "important" in data &&
+    "entertainment" in data
   ) {
     let essentialsEl = document.querySelector(
       ".bbuddy__essential > .bbuddy__output-items"
@@ -110,41 +109,40 @@ function spendingsHandler(data) {
     importantEl.innerHTML = "";
     entertainmentEl.innerHTML = "";
 
-    let outputs = data?.spending;
-    let essentials = outputs?.essential;
-    let important = outputs?.important;
-    let entertainment = outputs?.entertainment;
+    let essentials = data?.essential;
+    let important = data?.important;
+    let entertainment = data?.entertainment;
     let outputTotal = 0;
 
-    essentials.forEach((spending) => {
+    for(let key in essentials) {
       createSpendingsHtml(
-        spending?.name,
+        essentials[key].name,
         "essential",
-        spending?.value,
-        spending?.id
+        essentials[key].value,
+        essentials[key].id
       );
-      outputTotal += Number(spending?.value);
-    });
+      outputTotal += Number(essentials[key].value);
+    };
 
-    important.forEach((spending) => {
+    for(let key in important) {
       createSpendingsHtml(
-        spending?.name,
+        important[key].name,
         "important",
-        spending?.value,
-        spending?.id
+        important[key].value,
+        important[key].id
       );
-      outputTotal += Number(spending?.value);
-    });
+      outputTotal += Number(important[key].value);
+    };
 
-    entertainment.forEach((spending) => {
+    for(let key in entertainment) {
       createSpendingsHtml(
-        spending?.name,
+        entertainment[key].name,
         "entertainment",
-        spending?.value,
-        spending?.id
+        entertainment[key].value,
+        entertainment[key].id
       );
-      outputTotal += Number(spending?.value);
-    });
+      outputTotal += Number(entertainment[key].value);
+    };
 
     sessionStorage.setItem("spendingsTotal", outputTotal);
 

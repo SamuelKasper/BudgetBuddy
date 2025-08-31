@@ -41,21 +41,21 @@ function calculateTotal() {
   let outputTotal = 0;
   let intakeTotal = 0;
 
-  intakes.forEach((intake) => {
-    intakeTotal += Number(intake?.value);
-  });
+  for (let key in intakes) {
+    intakeTotal += Number(intakes[key].value);
+  }
 
-  essentials.forEach((spending) => {
-    outputTotal += Number(spending?.value);
-  });
+  for (let key in essentials) {
+    outputTotal += Number(essentials[key].value);
+  }
 
-  important.forEach((spending) => {
-    outputTotal += Number(spending?.value);
-  });
+  for (let key in important) {
+    outputTotal += Number(important[key].value);
+  }
 
-  entertainment.forEach((spending) => {
-    outputTotal += Number(spending?.value);
-  });
+  for (let key in entertainment) {
+    outputTotal += Number(entertainment[key].value);
+  }
 
   sessionStorage.setItem("spendingsTotal", outputTotal.toFixed(2));
   sessionStorage.setItem("intakesTotal", intakeTotal.toFixed(2));
@@ -88,13 +88,11 @@ function calculateTotal() {
 }
 
 function deleteEntry(obj, id) {
-  for (let key in obj) {
+  for (const key in obj) {
     if (Array.isArray(obj[key])) {
-      // Falls es ein Array ist → alle Elemente filtern
-      obj[key] = obj[key].filter((entry) => entry.id !== id);
-    } else if (typeof obj[key] === "object" && obj[key] !== null) {
-      // Falls es ein verschachteltes Objekt ist → rekursiv weiter suchen
-      deleteEntry(obj[key], id);
+      obj[key] = obj[key].filter((item) => item.id !== id);
+    }else{
+      obj = obj.filter(item => item.id !== id);
     }
   }
   return obj;

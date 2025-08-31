@@ -17,24 +17,22 @@ function setIntakes() {
   let name = document.getElementById("bbuddy__add-intake-name").value;
   let value = document.getElementById("bbuddy__add-intake-price").value;
   let uuid = self.crypto.randomUUID();
-  data.intake.push({ id: uuid, name: name, value: value });
+  data.push({ id: uuid, name: name, value: value });
   sessionStorage.setItem("bbuddy-intake", JSON.stringify(data));
   intakesHandler(data);
 }
 
 function getIntakes() {
   let data = sessionStorage.getItem("bbuddy-intake");
-  return JSON.parse(data) ?? {'intake':[]};
+  return JSON.parse(data) ?? [];
 }
 
 function intakesHandler(data) {
-  if ("intake" in data) {
     let intakeItems = document.querySelector(".bbuddy__intake-items");
     intakeItems.innerHTML = '';
-    let intakes = data.intake;
     let intakeTotal = 0;
 
-    intakes.forEach((intake) => {
+    data.forEach((intake) => {
       createIntaktesHtml(intakeItems, intake?.name, intake?.value, intake?.id);
       intakeTotal += Number(intake?.value);
     });
@@ -51,7 +49,6 @@ function intakesHandler(data) {
         intakesHandler(data);
       });
     });
-  }
 }
 
 async function createIntaktesHtml(intakeItems, name, value, id) {
