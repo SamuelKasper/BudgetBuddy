@@ -1,10 +1,14 @@
-/**
- * Refresh if balance in preview changes
- */
+// Onload
+document.addEventListener("DOMContentLoaded", async (event) => {
+  let balance = Number(sessionStorage.getItem('balance')) ?? 0;
+  createPreview(balance);
+});
+
+// OnChange
 let current = document.getElementById("bbuddy__preview-current");
 current.addEventListener("input", (event) => {
-  let data = getDataFromSession();
-  createEntries(data);
+    let balance = Number(sessionStorage.getItem('balance')) ?? 0;
+    createPreview(balance);
 });
 
 function createPreview(balance) {
@@ -39,22 +43,4 @@ function createPreview(balance) {
 
     newBalance += balance;
   }
-}
-
-/**
- * Export json file
- */
-function exportJson() {
-  let data = getDataFromSession();
-  const blob = new Blob([JSON.stringify(data, null, 2)], {
-    type: "application/json",
-  });
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "budgetBuddy.json";
-  a.click();
-
-  URL.revokeObjectURL(url);
 }

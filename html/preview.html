@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="BudgetBuddy - Haushaltsbuch" />
     <link rel="stylesheet" href="/css/main.css" />
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="../manifest.json" />
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
@@ -45,7 +45,8 @@
         <h2 class="bbuddy__subheadline">Vorschau</h2>
 
         <p class="bbuddy__preview-info">
-          So viel sparst du innerhalb der nächsten 12 Monate
+          So viel sparst du innerhalb der nächsten 12 Monate. 
+          <small>(Einmalige Ausgaben werden nicht miteinbezogen!)</small>
         </p>
 
         <div class="bbuddy__add-field">
@@ -61,8 +62,11 @@
 
         <div class="bbuddy__preview"></div>
       </section>
+
+      <a href="/index.html" class="bbuddy__button"> Zum Dashboard </a>
     </section>
 
-    <script src="main.js"></script>
+    <script src="/js/preview.js"></script>
+    <script src="/js/import.js"></script>
   </body>
 </html>
