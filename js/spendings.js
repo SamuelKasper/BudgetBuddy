@@ -24,6 +24,8 @@ function setSpendings() {
     data.important.push({ id: uuid, name: name, value: value });
   } else if (type == "entertainment") {
     data.entertainment.push({ id: uuid, name: name, value: value });
+  } else if (type == "flex") {
+    data.flex.push({ id: uuid, name: name, value: value });
   }
   sessionStorage.setItem("bbuddy-spending", JSON.stringify(data));
   spendingsHandler(data);
@@ -36,6 +38,7 @@ function getSpendings() {
       essential: [],
       important: [],
       entertainment: [],
+      flex: [],
     }
   );
 }
@@ -49,6 +52,9 @@ async function createSpendingsHtml(name, type, value, id) {
   );
   let entertainment = document.querySelector(
     ".bbuddy__entertainment > .bbuddy__output-items"
+  );
+  let flex = document.querySelector(
+    ".bbuddy__flex > .bbuddy__output-items"
   );
 
   let buttonSpan = document.createElement("span");
@@ -78,6 +84,8 @@ async function createSpendingsHtml(name, type, value, id) {
     outputItems = important;
   } else if (type == "entertainment") {
     outputItems = entertainment;
+  } else if (type == "flex") {
+    outputItems = flex;
   }
 
   let item = document.createElement("div");
@@ -92,22 +100,27 @@ async function createSpendingsHtml(name, type, value, id) {
 }
 
 function spendingsHandler(data) {
-  if ("essential" in data && "important" in data && "entertainment" in data) {
+  if ("essential" in data && "important" in data && "entertainment" in data && "flex" in data) {
     let essentialsEl = document.querySelector(".bbuddy__essential");
     let essentialsItemsEl = essentialsEl.querySelector(".bbuddy__output-items");
     let importantEl = document.querySelector(".bbuddy__important");
     let importantItemsEl = importantEl.querySelector(".bbuddy__output-items");
     let entertainmentEl = document.querySelector(".bbuddy__entertainment");
     let entertainmentItemsEl = entertainmentEl.querySelector(".bbuddy__output-items");
+    let flexEl = document.querySelector(".bbuddy__flex");
+    let flexItemsEl = flexEl.querySelector(".bbuddy__output-items");
 
     essentialsItemsEl.innerHTML = "";
     importantItemsEl.innerHTML = "";
     entertainmentItemsEl.innerHTML = "";
+    flexItemsEl.innerHTML = "";
 
     let essentials = data?.essential;
     let important = data?.important;
     let entertainment = data?.entertainment;
+    let flex = data?.flex;
     let outputTotal = 0;
+    let outputTotalFlex = 0;
 
     for (let key in essentials) {
       createSpendingsHtml(
@@ -117,6 +130,7 @@ function spendingsHandler(data) {
         essentials[key].id
       );
       outputTotal += Number(essentials[key].value);
+      outputTotalFlex += Number(essentials[key].value);
     }
 
     for (let key in important) {
@@ -127,6 +141,7 @@ function spendingsHandler(data) {
         important[key].id
       );
       outputTotal += Number(important[key].value);
+      outputTotalFlex += Number(important[key].value);
     }
 
     for (let key in entertainment) {
@@ -137,9 +152,21 @@ function spendingsHandler(data) {
         entertainment[key].id
       );
       outputTotal += Number(entertainment[key].value);
+      outputTotalFlex += Number(entertainment[key].value);
+    }
+
+    for (let key in flex) {
+      createSpendingsHtml(
+        flex[key].name,
+        "flex",
+        flex[key].value,
+        flex[key].id
+      );
+      outputTotalFlex += Number(flex[key].value);
     }
 
     sessionStorage.setItem("spendingsTotal", outputTotal);
+    sessionStorage.setItem("spendingsTotalFlex", outputTotalFlex);
 
     if(essentialsItemsEl.childElementCount <= 0){
       essentialsEl.classList.add("visually-hidden");
@@ -155,6 +182,12 @@ function spendingsHandler(data) {
       entertainmentEl.classList.add("visually-hidden");
     }else{
       entertainmentEl.classList.remove("visually-hidden");
+    }
+
+    if(flexItemsEl.childElementCount <= 0){
+      flexEl.classList.add("visually-hidden");
+    }else{
+      flexEl.classList.remove("visually-hidden");
     }
 
     let removeBtns = [...document.querySelectorAll(".bbuddy__remove")];

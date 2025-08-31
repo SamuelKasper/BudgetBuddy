@@ -38,7 +38,9 @@ function calculateTotal() {
   let essentials = spendings?.essential;
   let important = spendings?.important;
   let entertainment = spendings?.entertainment;
+  let flex = spendings?.flex;
   let outputTotal = 0;
+  let outputTotalFlex = 0;
   let intakeTotal = 0;
 
   for (let key in intakes) {
@@ -47,20 +49,29 @@ function calculateTotal() {
 
   for (let key in essentials) {
     outputTotal += Number(essentials[key].value);
+    outputTotalFlex += Number(essentials[key].value);
   }
 
   for (let key in important) {
     outputTotal += Number(important[key].value);
+    outputTotalFlex += Number(essentials[key].value);
   }
 
   for (let key in entertainment) {
     outputTotal += Number(entertainment[key].value);
+    outputTotalFlex += Number(essentials[key].value);
+  }
+
+  for (let key in flex) {
+    outputTotalFlex += Number(flex[key].value);
   }
 
   sessionStorage.setItem("spendingsTotal", outputTotal.toFixed(2));
   sessionStorage.setItem("intakesTotal", intakeTotal.toFixed(2));
   let balance = intakeTotal - outputTotal;
+  let balanceFlex = intakeTotal - outputTotalFlex;
   sessionStorage.setItem("balance", balance.toFixed(2));
+  sessionStorage.setItem("balanceFlex", balanceFlex.toFixed(2));
 
   // Write in HTML
   let dashboardIntake = document.getElementById("bbuddy__dashboard-intake");
@@ -70,7 +81,7 @@ function calculateTotal() {
 
   let dashboardOutput = document.getElementById("bbuddy__dashboard-output");
   if (dashboardOutput) {
-    dashboardOutput.innerText = outputTotal + "€";
+    dashboardOutput.innerText = outputTotalFlex + "€";
   }
 
   let dashboardBalance = document.getElementById("bbuddy__dashboard-balance");
@@ -78,12 +89,23 @@ function calculateTotal() {
     dashboardBalance.innerText = balance + "€";
   }
 
-  let balanceEl = document.querySelector(".bbuddy__dashboard-item--balance");
+  let dashboardBalanceFlex = document.getElementById("bbuddy__dashboard-balance-flex");
+  if (dashboardBalanceFlex) {
+    dashboardBalanceFlex.innerText = balanceFlex + "€";
+  }
 
+  let balanceEl = document.querySelector(".bbuddy__dashboard-item--balance");
   if (balanceEl && balance && balance > 0) {
     balanceEl.classList.add("bbuddy__dashboard-item--positive");
   } else if (balanceEl && balance && balance < 0) {
     balanceEl.classList.add("bbuddy__dashboard-item--negative");
+  }
+  
+  let balanceFlexEl = document.querySelector(".bbuddy__dashboard-item--balance-flex");
+  if (balanceFlexEl && balanceFlex && balanceFlex > 0) {
+    balanceFlexEl.classList.add("bbuddy__dashboard-item--positive");
+  } else if (balanceFlexEl && balanceFlex && balanceFlex < 0) {
+    balanceFlexEl.classList.add("bbuddy__dashboard-item--negative");
   }
 }
 
