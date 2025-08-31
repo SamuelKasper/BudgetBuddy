@@ -121,7 +121,12 @@ function deleteEntry(obj, id) {
 }
 
 function exportJson() {
-  let data = getDataFromSession();
+  let spending = JSON.parse(sessionStorage.getItem('bbuddy-spending'));
+  let intake = JSON.parse(sessionStorage.getItem('bbuddy-intake'));
+  let data = {
+    "intake":intake,
+    'output':spending,
+  };
   const blob = new Blob([JSON.stringify(data, null, 2)], {
     type: "application/json",
   });
