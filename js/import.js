@@ -54,12 +54,12 @@ function calculateTotal() {
 
   for (let key in important) {
     outputTotal += Number(important[key].value);
-    outputTotalFlex += Number(essentials[key].value);
+    outputTotalFlex += Number(important[key].value);
   }
 
   for (let key in entertainment) {
     outputTotal += Number(entertainment[key].value);
-    outputTotalFlex += Number(essentials[key].value);
+    outputTotalFlex += Number(entertainment[key].value);
   }
 
   for (let key in flex) {
@@ -91,7 +91,7 @@ function calculateTotal() {
 
   let dashboardBalanceFlex = document.getElementById("bbuddy__dashboard-balance-flex");
   if (dashboardBalanceFlex) {
-    dashboardBalanceFlex.innerText = balanceFlex + "€";
+    dashboardBalanceFlex.innerText = balanceFlex.toFixed(2) + "€";
   }
 
   let balanceEl = document.querySelector(".bbuddy__dashboard-item--balance");
