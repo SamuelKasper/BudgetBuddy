@@ -1,13 +1,3 @@
-// TODO Umbauen das bei dashboard daten geladen werden!
-document.addEventListener("DOMContentLoaded", async (event) => {
-  let data = getDataFromSession();
-  if (!data) {
-    data = await readJson();
-    saveData(data);
-  }
-  createEntries(data);
-});
-
 /**
  * Refresh if balance in preview changes
  */
@@ -16,9 +6,6 @@ current.addEventListener("input", (event) => {
   let data = getDataFromSession();
   createEntries(data);
 });
-
-
-
 
 function createPreview(balance) {
   let current = document.getElementById("bbuddy__preview-current").value ?? 0;
@@ -52,22 +39,6 @@ function createPreview(balance) {
 
     newBalance += balance;
   }
-}
-
-/**
- * Entfernt ein Eintrag aus dem Array anhand des namens
- */
-function deleteByName(obj, targetName) {
-  for (let key in obj) {
-    if (Array.isArray(obj[key])) {
-      // Falls es ein Array ist → alle Elemente filtern
-      obj[key] = obj[key].filter((entry) => entry.name !== targetName);
-    } else if (typeof obj[key] === "object" && obj[key] !== null) {
-      // Falls es ein verschachteltes Objekt ist → rekursiv weiter suchen
-      deleteByName(obj[key], targetName);
-    }
-  }
-  return obj;
 }
 
 /**
