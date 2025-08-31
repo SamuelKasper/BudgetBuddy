@@ -48,7 +48,7 @@ body {
 }
 
 .bbuddy__headline {
-  font-size: 2.75rem;
+  font-size: clamp(2rem, 1.818rem + 0.777vw, 2.75rem);
   text-transform: uppercase;
   margin-bottom: 0.5rem;
   letter-spacing: 1px;
