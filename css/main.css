@@ -260,6 +260,10 @@ body {
   }
 }
 
+.bbuddy__remove-svg {
+  pointer-events: none;
+}
+
 .bbuddy__preview-row,
 .bbuddy__balance-row {
   display: flex;
