@@ -12,6 +12,12 @@ current.addEventListener("input", (event) => {
 });
 
 function createPreview(balance) {
+  let currentMonth = new Date().getMonth();
+  const monate = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+  const upcomingMonths = Array.from({ length: 12 }, (_, i) => {
+    return monate[(currentMonth + i) % 12];
+  });
+
   let current = document.getElementById("bbuddy__preview-current").value ?? 0;
   if (!typeof current === "number") {
     current = 0;
@@ -21,14 +27,10 @@ function createPreview(balance) {
   wrapper.innerHTML = "";
   let newBalance = Number(Number(current) + Number(balance));
 
-  for (let i = 1; i <= 12; i++) {
+  for (let i = 0; i <= 11; i++) {
     let previewMonth = document.createElement("p");
     previewMonth.classList.add("bbuddy__preview-moth");
-    if (i == 1) {
-      previewMonth.innerText = i + " Monat";
-    } else {
-      previewMonth.innerText = i + " Monate";
-    }
+    previewMonth.innerText = upcomingMonths[i];
 
     let previewValue = document.createElement("p");
     previewValue.classList.add("bbuddy__preview-value");

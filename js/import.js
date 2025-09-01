@@ -134,7 +134,10 @@ function exportJson() {
 
   const a = document.createElement("a");
   a.href = url;
-  a.download = "budgetBuddy.json";
+  const monate = ["januar", "februar", "märz", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "dezember"];
+  let month = new Date().getMonth();
+  let monthName = monate[month];
+  a.download = "bbuddy-" + monthName + ".json";
   a.click();
 
   URL.revokeObjectURL(url);
