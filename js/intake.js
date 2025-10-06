@@ -14,12 +14,28 @@ document
 
 function setIntakes() {
   let data = getIntakes();
-  let name = document.getElementById("bbuddy__add-intake-name").value;
-  let value = document.getElementById("bbuddy__add-intake-price").value;
+  let nameField = document.getElementById("bbuddy__add-intake-name");
+  let name = nameField.value;
+  let valueField = document.getElementById("bbuddy__add-intake-price");
+  let value = valueField.value;
+  let frequency = document.getElementById("bbuddy__add-output-frequency").value;
+
+  if(name == '' || value == '' ){
+    return;
+  }
+
+  if(frequency == 'yearly'){
+    value = value / 12;
+  }
+
   let uuid = self.crypto.randomUUID();
   data.push({ id: uuid, name: name, value: value });
   sessionStorage.setItem("bbuddy-intake", JSON.stringify(data));
   intakesHandler(data);
+
+  // clear fields
+  nameField.value = '';
+  valueField.value = '';
 }
 
 function getIntakes() {

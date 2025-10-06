@@ -14,9 +14,20 @@ document
 
 function setSpendings() {
   let data = getSpendings();
-  let name = document.getElementById("bbuddy__add-output-name").value;
-  let value = document.getElementById("bbuddy__add-output-price").value;
+  let nameField = document.getElementById("bbuddy__add-output-name");
+  let name = nameField.value;
+  let valueField = document.getElementById("bbuddy__add-output-price");
+  let value = valueField.value;
   let type = document.getElementById("bbuddy__add-output-type").value;
+  let frequency = document.getElementById("bbuddy__add-output-frequency").value;
+  if(name == '' || value == '' ){
+    return;
+  }
+
+  if(frequency == 'yearly'){
+    value = value / 12;
+  }
+
   let uuid = self.crypto.randomUUID();
   if (type == "essential") {
     data.essential.push({ id: uuid, name: name, value: value });
@@ -29,6 +40,10 @@ function setSpendings() {
   }
   sessionStorage.setItem("bbuddy-spending", JSON.stringify(data));
   spendingsHandler(data);
+
+  // clear fields
+  nameField.value = '';
+  valueField.value = '';
 }
 
 function getSpendings() {
