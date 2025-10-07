@@ -26,6 +26,7 @@ function setSpendings() {
 
   if(frequency == 'yearly'){
     value = value / 12;
+    value = value.toFixed(2);
   }
 
   let uuid = self.crypto.randomUUID();
