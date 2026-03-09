@@ -45,6 +45,43 @@ function getMonthLabel(monthKey) {
     return MONATE[parseInt(month, 10) - 1] + ' ' + year;
 }
 
+function getPrevMonthKey(monthKey) {
+    const [year, month] = monthKey.split('-').map(Number);
+    const date = new Date(year, month - 2, 1);
+    return getMonthKey(date);
+}
+
+function isMonthEmpty(monthKey) {
+    const data = getMonthData(monthKey);
+    const hasIntake = data.intake && data.intake.length > 0;
+    const output = data.output || {};
+    const hasOutput = ['essential', 'important', 'entertainment', 'flex']
+        .some((cat) => output[cat] && output[cat].length > 0);
+    return !hasIntake && !hasOutput;
+}
+
+function copyPrevMonth() {
+    const currentKey = getCurrentMonth();
+    const prevKey = getPrevMonthKey(currentKey);
+    const prevData = getMonthData(prevKey);
+
+    // Deep copy to get independent entries with new IDs
+    const copied = JSON.parse(JSON.stringify(prevData));
+    for (const item of copied.intake) {
+        item.id = self.crypto.randomUUID();
+    }
+    for (const cat of ['essential', 'important', 'entertainment', 'flex']) {
+        if (copied.output[cat]) {
+            for (const item of copied.output[cat]) {
+                item.id = self.crypto.randomUUID();
+            }
+        }
+    }
+
+    setMonthData(currentKey, copied);
+    window.location.reload();
+}
+
 function navigateMonth(offset) {
     const current = getCurrentMonth();
     const [year, month] = current.split('-').map(Number);
@@ -77,6 +114,17 @@ function initMonthNav() {
     }
     if (nextBtn) {
         nextBtn.addEventListener('click', () => navigateMonth(1));
+    }
+
+    // Copy previous month button
+    const copyBtn = document.querySelector('.bbuddy__copy-prev-month');
+    if (copyBtn) {
+        const currentKey = getCurrentMonth();
+        const prevKey = getPrevMonthKey(currentKey);
+        if (isMonthEmpty(currentKey) && !isMonthEmpty(prevKey)) {
+            copyBtn.hidden = false;
+            copyBtn.addEventListener('click', copyPrevMonth);
+        }
     }
 }
 
