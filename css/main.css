@@ -60,6 +60,46 @@ body {
   margin-bottom: 1rem;
 }
 
+.bbuddy__month-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.bbuddy__month-nav-label {
+  font-size: clamp(1.125rem, 1rem + 0.5vi, 1.375rem);
+  font-weight: 600;
+  min-width: 10rem;
+  text-align: center;
+}
+
+.bbuddy__month-nav-prev,
+.bbuddy__month-nav-next {
+  font-size: 1.25rem;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.25rem;
+  width: 2.25rem;
+  border: .125rem solid #fff;
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color .3s, color .3s;
+}
+
+.bbuddy__month-nav-prev:hover,
+.bbuddy__month-nav-prev:focus-visible,
+.bbuddy__month-nav-next:hover,
+.bbuddy__month-nav-next:focus-visible {
+  background-color: #fff;
+  color: var(--black);
+}
+
 .bbuddy__disclaimer {
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;

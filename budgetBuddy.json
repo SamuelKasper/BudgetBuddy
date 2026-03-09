@@ -1,38 +1,11 @@
 {
-    "intake": [
-        {
-            "name": "Kein Eintrag",
-            "value": "0"
-        },
-        {
-            "name": "Kein Eintrag",
-            "value": "0"
+    "2026-03": {
+        "intake": [],
+        "output": {
+            "essential": [],
+            "important": [],
+            "entertainment": [],
+            "flex": []
         }
-    ],
-    "output": {
-        "essential": [
-            {
-                "name": "Kein Eintrag",
-                "value": "0"
-            }
-        ],
-        "important": [
-            {
-                "name": "Kein Eintrag",
-                "value": "0"
-            }
-        ],
-        "entertainment": [
-            {
-                "name": "Kein Eintrag",
-                "value": "0"
-            }
-        ],
-        "flex": [
-            {
-                "name": "Kein Eintrag",
-                "value": "0"
-            }
-        ]
     }
 }
