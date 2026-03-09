@@ -95,6 +95,7 @@ function navigateMonth(offset) {
 document.addEventListener('DOMContentLoaded', () => {
     initMonthNav();
     calculateTotal();
+    initYearlyOverview();
 });
 
 // Month navigation UI
@@ -243,6 +244,112 @@ function calculateTotal() {
             balanceFlexEl.classList.add('bbuddy__dashboard-item--negative');
         }
     }
+}
+
+function calcMonthBalance(monthKey) {
+    const data = getMonthData(monthKey);
+    const intakes = data.intake || [];
+    const output = data.output || {};
+    let intakeTotal = 0;
+    let outputTotal = 0;
+
+    for (const item of intakes) {
+        intakeTotal += Number(item.value);
+    }
+    for (const cat of ['essential', 'important', 'entertainment', 'flex']) {
+        for (const item of (output[cat] || [])) {
+            outputTotal += Number(item.value);
+        }
+    }
+    return intakeTotal - outputTotal;
+}
+
+function initYearlyOverview() {
+    const chart = document.querySelector('.bbuddy__yearly-chart');
+    if (!chart) return;
+
+    const currentKey = getCurrentMonth();
+    const [curYear, curMonth] = currentKey.split('-').map(Number);
+    const allData = getAllData();
+    const balances = [];
+    let maxAbs = 0;
+
+    // Last 12 months ending with current month
+    for (let i = 11; i >= 0; i--) {
+        const date = new Date(curYear, curMonth - 1 - i, 1);
+        const key = getMonthKey(date);
+        const month = date.getMonth() + 1;
+        const hasData = key in allData;
+        const balance = hasData ? calcMonthBalance(key) : null;
+        balances.push({ month: month, key: key, balance: balance, hasData: hasData });
+        if (hasData && Math.abs(balance) > maxAbs) {
+            maxAbs = Math.abs(balance);
+        }
+    }
+
+    // Zero line
+    const zeroLine = document.createElement('div');
+    zeroLine.classList.add('bbuddy__yearly-zero');
+
+    // Bars container (upper = positive, lower = negative)
+    const barsContainer = document.createElement('div');
+    barsContainer.classList.add('bbuddy__yearly-bars');
+
+    for (const entry of balances) {
+        const col = document.createElement('div');
+        col.classList.add('bbuddy__yearly-col');
+        if (entry.key === currentKey) {
+            col.classList.add('bbuddy__yearly-col--active');
+        }
+
+        const barPositive = document.createElement('div');
+        barPositive.classList.add('bbuddy__yearly-bar-pos');
+
+        const barNegative = document.createElement('div');
+        barNegative.classList.add('bbuddy__yearly-bar-neg');
+
+        if (entry.hasData && maxAbs > 0) {
+            const pct = (Math.abs(entry.balance) / maxAbs) * 100;
+            if (entry.balance >= 0) {
+                barPositive.style.height = Math.max(pct, 3) + '%';
+            } else {
+                barNegative.style.height = Math.max(pct, 3) + '%';
+            }
+        }
+
+        const value = document.createElement('span');
+        value.classList.add('bbuddy__yearly-value');
+        if (entry.hasData) {
+            value.textContent = entry.balance.toFixed(0) + '€';
+        } else {
+            value.textContent = '–';
+            value.classList.add('bbuddy__yearly-value--empty');
+        }
+
+        const label = document.createElement('span');
+        label.classList.add('bbuddy__yearly-label');
+        label.textContent = MONATE[entry.month - 1].substring(0, 3);
+
+        // Upper half (positive bar grows upward from bottom)
+        const upperHalf = document.createElement('div');
+        upperHalf.classList.add('bbuddy__yearly-upper');
+        upperHalf.appendChild(barPositive);
+
+        // Lower half (negative bar grows downward from top)
+        const lowerHalf = document.createElement('div');
+        lowerHalf.classList.add('bbuddy__yearly-lower');
+        lowerHalf.appendChild(barNegative);
+
+        col.appendChild(value);
+        col.appendChild(upperHalf);
+        col.appendChild(lowerHalf);
+        col.appendChild(label);
+        barsContainer.appendChild(col);
+    }
+
+    chart.appendChild(barsContainer);
+    // Insert zero line into bars container
+    barsContainer.appendChild(zeroLine);
 }
 
 function deleteEntry(obj, id) {
